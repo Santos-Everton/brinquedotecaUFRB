@@ -32,3 +32,49 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 4. Gerar dados formatados e gráficos a fim de estabalecer o impacto da brinquedoteca na qualidade de vida e recuperação das crianças. Gerar tabelas e gráficos da quantidade de crianças, frequência das crianças, quantidade de tempo de cada criança na brinquedoteca, dentre outros.
 
 5. Cadastro do responsável por resgatar a criança após estadia na briquedoteca a fim de manter a segurança da criança e em caso de emergencia saber quem informar. Registrar documentação básica, número de telefone, e-mail, foto, e vincular este registro com os dados da criança.
+
+<br>
+
+## Especificação das funcionalidades
+<br>
+
+| ID | RF01 | 
+| :--- | :--- |
+| Nome | Registro de criança no sistema |
+| Descrição | Usuário cadastrado registra a criança e o responsável no sistema. |
+| Req. Relacionados | Login, Atualização de registro de criança, Controle de permanência |
+| Ator | Responsável pela criança ou adolescente |
+
+| Passo | Ação do usuário | Resposta do sistema |
+| :---: | :---: | :--- |
+| 1 | Login no sistema | Após o usuário efetuar o login é apresentado um ambiente onde o usuário pode fazer um novo registro ou atualizar um registro existente. |
+| 2 | Novo registro | Após o usuário clicar em novo registro é apresentado um formulário de registro onde o usuário irá preencher com seus dados e dados da criança. |
+| 3 | Confirmação de registro | Após o usuário preencher o formulário de registro é apresentado a confirmação dos dados e o sistema confirma o novo registro. Após, é apresentado o ambiente inicial de novo registro e atualização. | 
+<br><br>
+
+| ID | RF02 | 
+| :--- | :--- |
+| Nome | Atualização de registro de criança |
+| Descrição | Usuário cadastrado atualiza o registro da criança e ou do responsável no sistema. |
+| Req. Relacionados | Login, Controle de permanência |
+| Ator | Responsável pela criança ou adolescente |
+
+| Passo | Ação do usuário | Resposta do sistema |
+| :---: | :---: | :--- |
+| 1 | Login no sistema | Após o usuário efetuar o login é apresentado um ambiente onde o usuário pode fazer um novo registro ou atualizar um registro existente. |
+| 2 | Atualização de registro | Após o usuário clicar em atualização de registro é apresentado uma lista com registros do usuário onde ele escolherá qual será atualizado e irá preencher com seus dados e ou dados da criança. |
+| 3 | Confirmação de atualização de registro | Após o usuário preencher o formulário com as atualizações é apresentado a confirmação dos dados e o sistema confirma a atualização do registro. Após, é apresentado o ambiente inicial de novo registro e atualização. |
+<br><br>
+
+| ID | RF03 | 
+| :--- | :--- |
+| Nome | Login |
+| Descrição | Permite que um usuário cadastrado acesse o sistema. |
+| Req. Relacionados | Cadastro de usuários |
+| Ator | Usuário |
+
+| Passo | Ação do usuário | Resposta do sistema |
+| :---: | :---: | :--- |
+| 1 | Acessar a url do sistema | O sistema mostra a tela de login com os campos de usuário e senha a serem preenchidos. |
+| 2 | O usuário preenche os campos solicitados | O sistema valida os campos preenchidos e mostra o ambiente incial com novo registro e atualização. |
+<br><br>

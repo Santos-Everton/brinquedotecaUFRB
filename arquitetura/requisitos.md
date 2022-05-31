@@ -16,14 +16,19 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 
 ### Requisitos funcionais (funcionalidades)
 * O sistema deve ser capaz de:
-  * registrar os dados das criânças/adolescentes atendidos;
-  * registrar a frequância desta criânça/adolescente;
-  * registrar a quantidade de tempo que esta criânça/adolescente permaneceu na brinquedoteca;
+  * registrar os dados das crianças/adolescentes atendidos;
+  * registrar a frequância e quantidade de tempo que esta criança/adolescente permaneceu na brinquedoteca;
   * controle de inventário e categorias dos briquedos;
   * gerar dados formatados e gráficos.
 * Cadastro do responsável por resgatar a criança após estadia na briquedoteca;
 
-## Detalhamento dos requisitos
-1. Registrar os dados das criânças/adolescentes atendidos a fim de manter uma informação detalhada do número de atendidos e quem são. Estas informações é a documentação básica da criânça, foto, responsável e observações avaliativas sobre elas.
+## Detalhamento das funcionalidades
+1. Registrar os dados das crianças/adolescentes atendidos a fim de manter uma informação detalhada do número de atendidos e quem são. Estas informações é a documentação básica da criança, foto, responsável e observações avaliativas sobre elas. As informações avaliativas são: no caso da brinquedoteca hospitalar, qual estado de saúde ou tratamento, estado emocional, comportamento, e qualquer outra observação do monitor.
 
-2. Registrar a frequância desta criânça/adolescente a fim de ter um número de quantidade de horas que esta passou na brinquedoteca. Registro da hora que ela entra no espaço e da hora que ela sai do espaço pela recepcionista. 
+2. Registrar a frequância e quantidade de tempo que esta criança/adolescente permaneceu na brinquedoteca a fim de ter um dado quantitativo da periodicidade e o tempo que a criança ficou brincando. Registro diário da hora que ela entra no espaço e da hora que ela sai do espaço pela recepcionista. 
+
+3. Controle de inventário e categorias dos briquedos a fim de saber o patrimônio da brinquedoteca e a faixa etária de cada brinquedo destinado a cada criança. Informações de quantidade do brinquedo, faixa etária, validade ou estado, se foi doado ou comprado.
+
+4. Gerar dados formatados e gráficos a fim de estabalecer o impacto da brinquedoteca na qualidade de vida e recuperação das crianças. Gerar tabelas e gráficos da quantidade de crianças, frequência das crianças, quantidade de tempo de cada criança na brinquedoteca, dentre outros.
+
+5. Cadastro do responsável por resgatar a criança após estadia na briquedoteca a fim de manter a segurança da criança e em caso de emergencia saber quem informar. Registrar documentação básica, número de telefone, e-mail, foto, e vincular este registro com os dados da criança.

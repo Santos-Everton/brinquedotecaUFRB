@@ -50,6 +50,7 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 | 1 | Login no sistema | Após o usuário efetuar o login é apresentado um ambiente onde o usuário pode fazer um novo registro ou atualizar um registro existente. |
 | 2 | Novo registro | Após o usuário clicar em novo registro é apresentado um formulário de registro onde o usuário irá preencher com seus dados e dados da criança. |
 | 3 | Confirmação de registro | Após o usuário preencher o formulário de registro é apresentado a confirmação dos dados e o sistema confirma o novo registro. Após, é apresentado o ambiente inicial de novo registro e atualização. | 
+
 <br><br>
 
 | ID | RF02 | 
@@ -64,6 +65,7 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 | 1 | Login no sistema | Após o usuário efetuar o login é apresentado um ambiente onde o usuário pode fazer um novo registro ou atualizar um registro existente. |
 | 2 | Atualização de registro | Após o usuário clicar em atualização de registro é apresentado uma lista com registros do usuário onde ele escolherá qual será atualizado e irá preencher com seus dados e ou dados da criança. |
 | 3 | Confirmação de atualização de registro | Após o usuário preencher o formulário com as atualizações é apresentado a confirmação dos dados e o sistema confirma a atualização do registro. Após, é apresentado o ambiente inicial de novo registro e atualização. |
+
 <br><br>
 
 | ID | RF03 | 
@@ -77,4 +79,5 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 | :---: | :---: | :--- |
 | 1 | Acessar a url do sistema | O sistema mostra a tela de login com os campos de usuário e senha a serem preenchidos. |
 | 2 | O usuário preenche os campos solicitados | O sistema valida os campos preenchidos e mostra o ambiente incial com novo registro e atualização. |
+
 <br><br>

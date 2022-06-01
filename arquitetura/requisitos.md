@@ -81,3 +81,19 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 | 2 | O usuário preenche os campos solicitados | O sistema valida os campos preenchidos e mostra o ambiente incial com novo registro e atualização. |
 
 <br><br>
+
+| ID | RF04 | 
+| :--- | :--- |
+| Nome | Cadastro de usuário |
+| Descrição | Cadastro de usuário no sistema. |
+| Req. Relacionados | Login |
+| Ator | Usuário |
+
+| Passo | Ação do usuário | Resposta do sistema |
+| :---: | :---: | :--- |
+| 1 | Acessar a url do sistema | O sistema mostra a tela de login com um ícone de cadastro de novo usuário. |
+| 2 | Clique em cadastro de novo usuário | Após o usuário clicar em cadastro de novo usuário o sistema apresenta um formulário onde o usuário preencherá com seus dados e criação de senha. |
+| 3 | Validação com código de verificação | Após o usuário preencher o formulário de cadastro é apresentado a confirmação dos dados, o sistema envia um e-mail com código de verificação para o usuário e o encaminha para a validação do código. |
+| 4 | Confirmação de cadastro do usuário | Após o usuário preencher o campo de verificação do código que foi enviado no passo anterior, o sistema confirma o cadastro e encaminha para o ambiente inicial de novo registro e atualização. |
+
+<br><br>

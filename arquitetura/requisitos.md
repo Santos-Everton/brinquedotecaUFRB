@@ -8,7 +8,7 @@
 [Transcrição entrevista 1](https://docs.google.com/document/d/1xFBG9e23nWkiTlMNSxKEHTME_qj5OxC8/edit?usp=sharing&ouid=110166493521473478854&rtpof=true&sd=true)
 
 ## Qual o problema a ser resolvido?
-__Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade de tempo presente, controle de inventário, dentre outros, para prestar contas e estabelecer provas do impacto da brinquedoteca na qualidade de vida e recuperação das crianças.__
+__Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade de tempo presente, dentre outros, para prestar contas e estabelecer provas do impacto da brinquedoteca na qualidade de vida e recuperação das crianças.__
 
 ### Requisitos não-funcionais (qualidade que o software deve ter)
 * Ser acessível a maior quantidade de usuários possível;
@@ -18,7 +18,6 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 * O sistema deve ser capaz de:
   * registrar os dados das crianças/adolescentes atendidos;
   * registrar a frequância e quantidade de tempo que esta criança/adolescente permaneceu na brinquedoteca;
-  * controle de inventário e categorias dos briquedos;
   * gerar dados formatados e gráficos.
 * Cadastro do responsável por resgatar a criança após estadia na briquedoteca;
 
@@ -27,11 +26,9 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 
 2. Registrar a frequância e quantidade de tempo que esta criança/adolescente permaneceu na brinquedoteca a fim de ter um dado quantitativo da periodicidade e o tempo que a criança ficou brincando. Registro diário da hora que ela entra no espaço e da hora que ela sai do espaço pela recepcionista. 
 
-3. Controle de inventário e categorias dos briquedos a fim de saber o patrimônio da brinquedoteca e a faixa etária de cada brinquedo destinado a cada criança. Informações de quantidade do brinquedo, faixa etária, validade ou estado, se foi doado ou comprado.
+3. Gerar dados formatados e gráficos a fim de estabalecer o impacto da brinquedoteca na qualidade de vida e recuperação das crianças. Gerar tabelas e gráficos da quantidade de crianças, frequência das crianças, quantidade de tempo de cada criança na brinquedoteca, dentre outros.
 
-4. Gerar dados formatados e gráficos a fim de estabalecer o impacto da brinquedoteca na qualidade de vida e recuperação das crianças. Gerar tabelas e gráficos da quantidade de crianças, frequência das crianças, quantidade de tempo de cada criança na brinquedoteca, dentre outros.
-
-5. Cadastro do responsável por resgatar a criança após estadia na briquedoteca a fim de manter a segurança da criança e em caso de emergencia saber quem informar. Registrar documentação básica, número de telefone, e-mail, foto, e vincular este registro com os dados da criança.
+4. Cadastro do responsável por resgatar a criança após estadia na briquedoteca a fim de manter a segurança da criança e em caso de emergencia saber quem informar. Registrar documentação básica, número de telefone, e-mail, foto, e vincular este registro com os dados da criança.
 
 <br>
 
@@ -43,12 +40,12 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 | Nome | Registro de criança no sistema |
 | Descrição | Usuário cadastrado registra a criança e o responsável no sistema. |
 | Req. Relacionados | Login, Atualização de registro de criança, Controle de permanência |
-| Ator | Responsável pela criança ou adolescente |
+| Ator | Recepcionista |
 
 | Passo | Ação do usuário | Resposta do sistema |
 | :---: | :---: | :--- |
 | 1 | Login no sistema | Após o usuário efetuar o login é apresentado um ambiente onde o usuário pode fazer um novo registro ou atualizar um registro existente. |
-| 2 | Novo registro | Após o usuário clicar em novo registro é apresentado um formulário de registro onde o usuário irá preencher com seus dados e dados da criança. |
+| 2 | Novo registro | Após o usuário clicar em novo registro é apresentado um formulário de registro onde o usuário irá preencher com os dados da criança e do responsável. |
 | 3 | Confirmação de registro | Após o usuário preencher o formulário de registro é apresentado a confirmação dos dados e o sistema confirma o novo registro. Após, é apresentado o ambiente inicial de novo registro e atualização. | 
 
 <br><br>
@@ -58,12 +55,12 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 | Nome | Atualização de registro de criança |
 | Descrição | Usuário cadastrado atualiza o registro da criança e ou do responsável no sistema. |
 | Req. Relacionados | Login, Controle de permanência |
-| Ator | Responsável pela criança ou adolescente |
+| Ator | Recepcionista |
 
 | Passo | Ação do usuário | Resposta do sistema |
 | :---: | :---: | :--- |
 | 1 | Login no sistema | Após o usuário efetuar o login é apresentado um ambiente onde o usuário pode fazer um novo registro ou atualizar um registro existente. |
-| 2 | Atualização de registro | Após o usuário clicar em atualização de registro é apresentado uma lista com registros do usuário onde ele escolherá qual será atualizado e irá preencher com seus dados e ou dados da criança. |
+| 2 | Atualização de registro | Após o usuário clicar em atualização de registro é apresentado uma lista com registros do usuário onde ele escolherá qual será atualizado e irá preencher com os dados da criança e do responsável. |
 | 3 | Confirmação de atualização de registro | Após o usuário preencher o formulário com as atualizações é apresentado a confirmação dos dados e o sistema confirma a atualização do registro. Após, é apresentado o ambiente inicial de novo registro e atualização. |
 
 <br><br>
@@ -79,21 +76,5 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
 | :---: | :---: | :--- |
 | 1 | Acessar a url do sistema | O sistema mostra a tela de login com os campos de usuário e senha a serem preenchidos. |
 | 2 | O usuário preenche os campos solicitados | O sistema valida os campos preenchidos e mostra o ambiente incial com novo registro e atualização. |
-
-<br><br>
-
-| ID | RF04 | 
-| :--- | :--- |
-| Nome | Cadastro de usuário |
-| Descrição | Cadastro de usuário no sistema. |
-| Req. Relacionados | Login |
-| Ator | Usuário |
-
-| Passo | Ação do usuário | Resposta do sistema |
-| :---: | :---: | :--- |
-| 1 | Acessar a url do sistema | O sistema mostra a tela de login com um ícone de cadastro de novo usuário. |
-| 2 | Clique em cadastro de novo usuário | Após o usuário clicar em cadastro de novo usuário o sistema apresenta um formulário onde o usuário preencherá com seus dados e criação de senha. |
-| 3 | Validação com código de verificação | Após o usuário preencher o formulário de cadastro é apresentado a confirmação dos dados, o sistema envia um e-mail com código de verificação para o usuário e o encaminha para a validação do código. |
-| 4 | Confirmação de cadastro do usuário | Após o usuário preencher o campo de verificação do código que foi enviado no passo anterior, o sistema confirma o cadastro e encaminha para o ambiente inicial de novo registro e atualização. |
 
 <br><br>

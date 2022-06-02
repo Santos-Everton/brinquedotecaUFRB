@@ -22,19 +22,21 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
   * registrar os dados do(s) responsável(eis) legal(ais) pela criança/adolescente na briquedoteca;
   * registrar o(s) responsável(eis) por resgatar a criança/adolescente após estadia na briquedoteca;
   * Possuir um painel administrativo com o intuito de gerar os dados citados acima.
-  * Possuir um perfil administrativo ja inserido no sistema o qual poderá cadastrar um ou mais funcionarios que iram operar as funcionaldiades relaciadas ao registro de crianças/adolecentes e responsaveis.
-  * 
+  * Possuir um perfil administrativo ja inserido no sistema o qual poderá cadastrar um ou mais funcionarios(Este perfil administrativo poderá realizar os mesmos atos do perfil funcionario).
+  * registrar um perfil funcionario que ira operar as funcionaldiades relaciadas ao registro de crianças/adolecentes e responsaveis.
 
 ## Detalhamento das funcionalidades
-1. Registrar os dados das crianças/adolescentes atendidos a fim de manter uma informação detalhada do número de atendidos e quem são. Estas informações é a documentação básica da criança, foto, responsável e observações avaliativas sobre elas. As informações avaliativas são: no caso da brinquedoteca hospitalar, qual estado de saúde ou tratamento, estado emocional, comportamento, e qualquer outra observação do monitor.
+1. Registrar o perfil do funcionario que irá gerir os dados das Crianças/adolescentes e responsaveis.
+
+2. Registrar os dados das crianças/adolescentes atendidos a fim de manter uma informação detalhada do número de atendidos e quem são. Estas informações é a documentação básica da criança, foto, responsável e observações avaliativas sobre elas. As informações avaliativas são: no caso da brinquedoteca hospitalar, qual estado de saúde ou tratamento, estado emocional, comportamento, e qualquer outra observação do monitor.
 
 2. Registrar a frequância e quantidade de tempo que esta criança/adolescente permaneceu na brinquedoteca a fim de ter um dado quantitativo da periodicidade e o tempo que a criança ficou brincando. Registro diário da hora que ela entra no espaço e da hora que ela sai do espaço pela recepcionista. 
 
 3. Gerar dados formatados e gráficos a fim de estabalecer o impacto da brinquedoteca na qualidade de vida e recuperação das crianças. Gerar tabelas e gráficos da quantidade de crianças, frequência das crianças, quantidade de tempo de cada criança na brinquedoteca, dentre outros.
 
-4. Cadastro do(s) responsável(eis) por resgatar a criança após estadia na briquedoteca a fim de manter a segurança da criança e em caso de emergencia saber quem informar. Registrar documentação básica, número de telefone, e-mail, foto, e vincular este registro com os dados da criança.
+4. Registrar o(s) responsável(eis) por resgatar a criança após estadia na briquedoteca a fim de manter a segurança da criança e em caso de emergencia saber quem informar. Registrar documentação básica, número de telefone, e-mail, foto, e vincular este registro com os dados da criança.
 
-5. Cadastro do(s) responsável(eis) legal(ais) da criança(Pai, mãe, etc...) a fim de manter a segurança da criança e em caso de emergencia saber quem informar. Registrar documentação básica, número de telefone, e-mail, foto, e vincular este registro com os dados da criança.
+5. Registrar o(s) responsável(eis) legal(ais) da criança(Pai, mãe, etc...) a fim de manter a segurança da criança e em caso de emergencia saber quem informar. Registrar documentação básica, número de telefone, e-mail, foto, e vincular este registro com os dados da criança.
 
 <br>
 

@@ -19,7 +19,8 @@ __Gerenciar e registrar os dados de frequencia, controle de acesso, quantidade d
   * registrar os dados das crianças/adolescentes atendidos;
   * registrar a frequância e quantidade de tempo que esta criança/adolescente permaneceu na brinquedoteca;
   * gerar dados formatados e gráficos.
-* Cadastro do responsável por resgatar a criança após estadia na briquedoteca;
+  * registrar os dados dos responsável(eis) pela criança/adolescentes após estadia na briquedoteca;
+  * registrar o(s) responsável(eis) por resgatar a criança após estadia na briquedoteca;
 
 ## Detalhamento das funcionalidades
 1. Registrar os dados das crianças/adolescentes atendidos a fim de manter uma informação detalhada do número de atendidos e quem são. Estas informações é a documentação básica da criança, foto, responsável e observações avaliativas sobre elas. As informações avaliativas são: no caso da brinquedoteca hospitalar, qual estado de saúde ou tratamento, estado emocional, comportamento, e qualquer outra observação do monitor.

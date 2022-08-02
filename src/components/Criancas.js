@@ -1,20 +1,25 @@
 import React from "react";
 import { Table, Modal } from "react-bootstrap";
 
+
+const backEndUrl = "http://localhost:5000/";
+
 class Criancas extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             id: 0,
-            nome: "",
-            cpfrg: "",
-            dataNascimento: "",
-            endereco: "",
-            observacao: "",
-            responsavel: "",
+            name: "",
+            cpf: "",
+            birthDate: "",
+            address: "",
+            obs: "",
+            guardian: "",
             modal: false,
             criancas: [
+/*
+
                 {
                     "id": 1,
                     "nome": "João",
@@ -33,12 +38,13 @@ class Criancas extends React.Component {
                     "observacao": "",
                     "responsavel": "Joana",
                 }
+*/
             ]
         }
     }
 
     componentDidMount() {
-        //this.buscarCrianca();
+        this.buscarCrianca();
     }
 
     componentWillUnmount() {
@@ -46,7 +52,7 @@ class Criancas extends React.Component {
     }
 
     buscarCrianca = () => {
-        fetch("URL do back")
+        fetch(`${backEndUrl}children`)
             .then(resposta => resposta.json())
             .then(dados => {
                 this.setState({ criancas: dados })
@@ -54,7 +60,7 @@ class Criancas extends React.Component {
     }
 
     excluirCrianca = (id) => {
-        fetch("URL do back" + id, { method: "DELETE" })
+        fetch(`${backEndUrl}children/` + id, { method: "DELETE" })
             .then(resposta => {
                 if (resposta.ok) {
                     this.buscarCrianca();
@@ -63,27 +69,34 @@ class Criancas extends React.Component {
     }
 
     carregarDados = (id) => {
-        fetch("URL do back" + id, { method: "GET" })
-            .then(resposta => resposta.json())
+        fetch(`${backEndUrl}children/` + id, { method: "GET" })
+            .then(resposta => {
+                resposta.json()
+                alert(resposta.json())
+            })
             .then(crianca => {
+                alert(crianca)
                 this.setState({
                     id: crianca.id,
-                    nome: crianca.state.nome,
-                    cpfrg: crianca.state.cpfrg,
-                    dataNascimento: crianca.state.dataNascimento,
-                    endereco: crianca.state.endereco,
-                    observacao: crianca.state.observacao,
-                    responsavel: crianca.state.responsavel
+                    name: crianca.state.name,
+                    cpf: crianca.state.cpf,
+                    birthdate: crianca.state.birthDate,
+                    address: crianca.state.address,
+                    obs: crianca.state.obs,
+                    guardian: crianca.state.guardian,
+                    modal: crianca.state.modal
                 })
                 this.abrirModal();
             })
+            .catch(erro => {alert(erro)})   
+            
     }
 
     adicionarCrianca = (crianca) => {
-        fetch("URL do back", {
+        fetch(`${backEndUrl}children`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            boddy: JSON.stringify(crianca)
+            body: JSON.stringify(crianca)
         }).then(resposta => {
             if (resposta.ok) {
                 this.buscarCrianca();
@@ -97,7 +110,7 @@ class Criancas extends React.Component {
         fetch("URL do back", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            boddy: JSON.stringify(crianca)
+            body: JSON.stringify(crianca)
         }).then(resposta => {
             if (resposta.ok) {
                 this.buscarCrianca();
@@ -111,23 +124,23 @@ class Criancas extends React.Component {
 
         if (this.state.id === 0) {
             const crianca = {
-                nome: this.state.nome,
-                cpfrg: this.state.cpfrg,
-                dataNascimento: this.state.dataNascimento,
-                endereco: this.state.endereco,
-                observacao: this.state.observacao,
-                responsavel: this.state.responsavel,
+                name: this.state.name,
+                cpf: this.state.cpf,
+                birthDate: this.state.birthDate,
+                address: this.state.address,
+                obs: this.state.obs,
+                /* guardians: this.state.guardian*/
             }
             this.adicionarCrianca(crianca);
         } else {
             const crianca = {
                 id: this.id,
-                nome: this.state.nome,
-                cpfrg: this.state.cpfrg,
-                dataNascimento: this.state.dataNascimento,
-                endereco: this.state.endereco,
-                observacao: this.state.observacao,
-                responsavel: this.state.responsavel,
+                name: this.state.name,
+                cpf: this.state.cpf,
+                birthDate: this.state.birthDate,
+                address: this.state.address,
+                obs: this.state.obs,
+               /* guardians: this.state.guardian*/
             }
             this.editarCrianca(crianca);
         }
@@ -148,19 +161,20 @@ class Criancas extends React.Component {
     }
 
     inputNome = (e) => {
-        this.setState({ nome: e.target.value });
+        this.setState({ name: e.target.value });
+       
     }
     inputCpfRg = (e) => {
-        this.setState({ cpfrg: e.target.value });
+        this.setState({ cpf: e.target.value });
     }
     inputDataNascimento = (e) => {
-        this.setState({ dataNascimento: e.target.value });
+        this.setState({ birthDate: e.target.value });
     }
     inputEndereco = (e) => {
-        this.setState({ endereco: e.target.value });
+        this.setState({ address: e.target.value });
     }
     inputObservacao = (e) => {
-        this.setState({ observacao: e.target.value });
+        this.setState({ obs: e.target.value });
     }
 
     fecharModal = () => {
@@ -170,6 +184,7 @@ class Criancas extends React.Component {
     }
 
     abrirModal = () => {
+        alert('fui chamado')
         this.setState({
             modal: true
         })
@@ -197,12 +212,12 @@ class Criancas extends React.Component {
                     {
                         this.state.criancas.map((crianca) =>
                             <tr>
-                                <td> {crianca.nome} </td>
-                                <td> {crianca.cpfrg} </td>
-                                <td> {crianca.dataNascimento} </td>
-                                <td> {crianca.endereco} </td>
-                                <td> {crianca.observacao} </td>
-                                <td> {crianca.responsavel} </td>
+                                <td> {crianca.name} </td>
+                                <td> {crianca.cpf} </td>
+                                <td> {crianca.birthdate} </td>
+                                <td> {crianca.address} </td>
+                                <td> {crianca.obs} </td>
+                                <td> {crianca.guardian} </td>
                                 <td>
                                     <button className='btn btn-sm btn-outline-primary me-2'
                                         onClick={() => this.carregarDados(crianca.id)}>
@@ -239,7 +254,7 @@ class Criancas extends React.Component {
                                     type="text"
                                     className="form-control"
                                     id="nome"
-                                    value={this.state.nome}
+                                    value={this.state.name}
                                     onChange={this.inputNome}
                                 />
                             </div>
@@ -250,7 +265,7 @@ class Criancas extends React.Component {
                                     className="form-control"
                                     id="cpfrg"
                                     placeholder="CPF ou RG da criança."
-                                    value={this.state.cpfrg}
+                                    value={this.state.cpf}
                                     onChange={this.inputCpfRg}
                                 />
                             </div>
@@ -260,7 +275,7 @@ class Criancas extends React.Component {
                                     id="dataNascimento"
                                     type="date"
                                     className='form-control'
-                                    value={this.state.dataNascimento}
+                                    value={this.state.birthDate}
                                     onChange={this.inputDataNascimento}
                                 />
                             </div>
@@ -270,7 +285,7 @@ class Criancas extends React.Component {
                                     type="text"
                                     className="form-control"
                                     id="endereco"
-                                    value={this.state.endereco}
+                                    value={this.state.address}
                                     onChange={this.inputEndereco}
                                 />
                             </div>
@@ -280,7 +295,7 @@ class Criancas extends React.Component {
                                     id="observacao"
                                     type="text"
                                     className='form-control'
-                                    value={this.state.observacao}
+                                    value={this.state.obs}
                                     onChange={this.inputObservacao}
                                 />
                             </div>
@@ -312,7 +327,6 @@ class Criancas extends React.Component {
                         </button>
                         <button
                             className='btn btn-outline-success'
-                            type="submit"
                             onClick={this.salvarCrianca}
                         >
                             Salvar

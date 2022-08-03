@@ -93,13 +93,15 @@ class Criancas extends React.Component {
     }
 
     adicionarCrianca = (crianca) => {
+        alert(crianca.stringify)
         fetch(`${backEndUrl}children`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(crianca)
-        }).then(resposta => {
+        }).then(resposta => {            
             if (resposta.ok) {
                 this.buscarCrianca();
+                alert("Criança adicionada !");
             } else {
                 alert("Não foi possível adicionar a criança!");
             }
@@ -120,7 +122,7 @@ class Criancas extends React.Component {
         });
     }
 
-    salvarCrianca = () => {
+    salvarCrianca = () => {             
 
         if (this.state.id === 0) {
             const crianca = {
@@ -128,9 +130,9 @@ class Criancas extends React.Component {
                 cpf: this.state.cpf,
                 birthDate: this.state.birthDate,
                 address: this.state.address,
-                obs: this.state.obs,
+                obs: this.state.obs
                 /* guardians: this.state.guardian*/
-            }
+            }            
             this.adicionarCrianca(crianca);
         } else {
             const crianca = {
@@ -139,9 +141,10 @@ class Criancas extends React.Component {
                 cpf: this.state.cpf,
                 birthDate: this.state.birthDate,
                 address: this.state.address,
-                obs: this.state.obs,
+                obs: this.state.obs
                /* guardians: this.state.guardian*/
             }
+            
             this.editarCrianca(crianca);
         }
         this.fecharModal();
@@ -328,6 +331,7 @@ class Criancas extends React.Component {
                         <button
                             className='btn btn-outline-success'
                             onClick={this.salvarCrianca}
+                            data-cy="buttonSalvar"
                         >
                             Salvar
                         </button>
@@ -337,6 +341,7 @@ class Criancas extends React.Component {
                 <button
                     className='btn btn-outline-primary me-2 mt-2'
                     type="submit"
+                    data-cy="buttonCrianca"
                     onClick={this.reset}
                 >
                     <i className="fas fa-plus me-2"></i>

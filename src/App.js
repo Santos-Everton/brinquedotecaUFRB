@@ -12,7 +12,7 @@ function App(){
             <BrowserRouter>
                 <Nav variant='tabs'>
                     <Nav.Link as={Link} to="/">Página Inicial</Nav.Link>
-                    <Nav.Link as={Link} to="/PermanenciaHome">Contorle de Permanências</Nav.Link>
+                    <Nav.Link as={Link} to="/PermanenciaHome">Controle de Permanências</Nav.Link>
                     <Nav.Link as={Link} to="/Criancas">Crianças</Nav.Link>
                     <Nav.Link as={Link} to="/Responsavel">Responsáveis</Nav.Link>
                 </Nav>

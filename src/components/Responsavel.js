@@ -59,7 +59,7 @@ class Responsavel extends React.Component {
     }
 
     excluirResponsavel = (id) => {
-        fetch("URL do back" + id, { method: "DELETE" })
+        fetch(`${backEndUrl}guardian/` + id, { method: "DELETE" })
             .then(resposta => {
                 if (resposta.ok) {
                     this.buscarResponsavel();

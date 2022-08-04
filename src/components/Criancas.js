@@ -93,7 +93,7 @@ class Criancas extends React.Component {
     }
 
     adicionarCrianca = (crianca) => {
-        alert(crianca.stringify)
+        alert(JSON.stringify(crianca))
         fetch(`${backEndUrl}children`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -124,15 +124,18 @@ class Criancas extends React.Component {
 
     salvarCrianca = () => {             
 
-        if (this.state.id === 0) {
+        if (this.state.id === 0) {            
             const crianca = {
                 name: this.state.name,
                 cpf: this.state.cpf,
                 birthDate: this.state.birthDate,
                 address: this.state.address,
-                obs: this.state.obs
+                obs: this.state.obs,
+                photo_url: '',
+                guardians: []
                 /* guardians: this.state.guardian*/
-            }            
+            }
+            //alert("crianca: " + crianca.birthDate);  
             this.adicionarCrianca(crianca);
         } else {
             const crianca = {
@@ -141,10 +144,11 @@ class Criancas extends React.Component {
                 cpf: this.state.cpf,
                 birthDate: this.state.birthDate,
                 address: this.state.address,
-                obs: this.state.obs
+                obs: this.state.obs,
+                photo_url: '',
+                guardians: []
                /* guardians: this.state.guardian*/
-            }
-            
+            }            
             this.editarCrianca(crianca);
         }
         this.fecharModal();

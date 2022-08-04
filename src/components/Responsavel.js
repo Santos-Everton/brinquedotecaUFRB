@@ -1,20 +1,24 @@
 import React from "react";
 import { Table, Modal } from "react-bootstrap";
 
+const backEndUrl = "http://localhost:5000/";
+
 class Responsavel extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             id: 0,
-            nome: "",
-            cpfrg: "",
-            dataNascimento: "",
-            endereco: "",
+            name: "",
+            cpf: "",
+            birthDate: "",
+            address: "",
             email: "",
-            telefone: "",
+            phone: "",
+            photo_url: "",
             modal: false,
             responsavel: [
+                /*
                 {
                     "id": 1,
                     "nome": "João",
@@ -33,12 +37,13 @@ class Responsavel extends React.Component {
                     "email": "",
                     "telefone": "123456789",
                 }
+                */
             ]
         }
     }
 
     componentDidMount() {
-        //this.buscarResponsavel();
+        this.buscarResponsavel();
     }
 
     componentWillUnmount() {
@@ -46,7 +51,7 @@ class Responsavel extends React.Component {
     }
 
     buscarResponsavel = () => {
-        fetch("URL do back")
+        fetch(`${backEndUrl}guardian`)
             .then(resposta => resposta.json())
             .then(dados => {
                 this.setState({ responsavel: dados })
@@ -79,16 +84,16 @@ class Responsavel extends React.Component {
             })
     }
 
-    adicionarResponsavel = (crianca) => {
-        fetch("URL do back", {
+    adicionarResponsavel = (responsavel) => {
+        fetch(`${backEndUrl}guardian`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            boddy: JSON.stringify(crianca)
+            body: JSON.stringify(responsavel)
         }).then(resposta => {
             if (resposta.ok) {
                 this.buscarResponsavel();
             } else {
-                alert("Não foi possível adicionar a criança!");
+                alert("Não foi possível adicionar o responsável!");
             }
         });
     }
@@ -110,26 +115,28 @@ class Responsavel extends React.Component {
     salvarResponsavel = () => {
 
         if (this.state.id === 0) {
-            const crianca = {
-                nome: this.state.nome,
-                cpfrg: this.state.cpfrg,
-                dataNascimento: this.state.dataNascimento,
-                endereco: this.state.endereco,
+            const responsavel = {
+                name: this.state.name,
+                cpf: this.state.cpf,
+                birthDate: this.state.birthDate,
+                address: this.state.address,
                 email: this.state.email,
-                telefone: this.state.telefone,
+                photo_url: '',
+                phone: this.state.phone,
             }
-            this.adicionarResponsavel(crianca);
+            this.adicionarResponsavel(responsavel);
         } else {
-            const crianca = {
+            const responsavel = {
                 id: this.id,
-                nome: this.state.nome,
-                cpfrg: this.state.cpfrg,
-                dataNascimento: this.state.dataNascimento,
-                endereco: this.state.endereco,
+                name: this.state.name,
+                cpf: this.state.cpf,
+                birthDate: this.state.birthDate,
+                address: this.state.address,
                 email: this.state.email,
-                telefone: this.state.telefone,
+                photo_url: '',
+                phone: this.state.phone,
             }
-            this.editarResponsavel(crianca);
+            this.editarResponsavel(responsavel);
         }
         this.fecharModal();
     }
@@ -137,33 +144,33 @@ class Responsavel extends React.Component {
     reset = () => {
         this.setState({
             id: 0,
-            nome: "",
-            cpfrg: "",
-            dataNascimento: "",
-            endereco: "",
+            name: "",
+            cpf: "",
+            birthDate: "",
+            address: "",
             email: "",
-            telefone: "",
+            phone: "",
         })
         this.abrirModal();
     }
 
     inputNome = (e) => {
-        this.setState({ nome: e.target.value });
+        this.setState({ name: e.target.value });
     }
     inputCpfRg = (e) => {
-        this.setState({ cpfrg: e.target.value });
+        this.setState({ cpf: e.target.value });
     }
     inputDataNascimento = (e) => {
-        this.setState({ dataNascimento: e.target.value });
+        this.setState({ birthDate: e.target.value });
     }
     inputEndereco = (e) => {
-        this.setState({ endereco: e.target.value });
+        this.setState({ address: e.target.value });
     }
     inputemail = (e) => {
         this.setState({ email: e.target.value });
     }
     inputTelefone = (e) => {
-        this.setState({ telefone: e.target.value });
+        this.setState({ phone: e.target.value });
     }
 
     fecharModal = () => {
@@ -200,12 +207,12 @@ class Responsavel extends React.Component {
                     {
                         this.state.responsavel.map((responsavel) =>
                             <tr>
-                                <td> {responsavel.nome} </td>
-                                <td> {responsavel.cpfrg} </td>
-                                <td> {responsavel.dataNascimento} </td>
-                                <td> {responsavel.endereco} </td>
+                                <td> {responsavel.name} </td>
+                                <td> {responsavel.cpf} </td>
+                                <td> {responsavel.birthDate} </td>
+                                <td> {responsavel.address} </td>
                                 <td> {responsavel.email} </td>
-                                <td> {responsavel.telefone} </td>
+                                <td> {responsavel.phone} </td>
                                 <td>
                                     <button className='btn btn-sm btn-outline-primary me-2'
                                         onClick={() => this.carregarDados(responsavel.id)}>
@@ -242,7 +249,7 @@ class Responsavel extends React.Component {
                                     type="text"
                                     className="form-control"
                                     id="nome"
-                                    value={this.state.nome}
+                                    value={this.state.name}
                                     onChange={this.inputNome}
                                 />
                             </div>
@@ -253,7 +260,7 @@ class Responsavel extends React.Component {
                                     className="form-control"
                                     id="cpfrg"
                                     placeholder="CPF ou RG do responsável."
-                                    value={this.state.cpfrg}
+                                    value={this.state.cpf}
                                     onChange={this.inputCpfRg}
                                 />
                             </div>
@@ -263,7 +270,7 @@ class Responsavel extends React.Component {
                                     id="dataNascimento"
                                     type="date"
                                     className='form-control'
-                                    value={this.state.dataNascimento}
+                                    value={this.state.birthDate}
                                     onChange={this.inputDataNascimento}
                                 />
                             </div>
@@ -273,7 +280,7 @@ class Responsavel extends React.Component {
                                     type="text"
                                     className="form-control"
                                     id="endereco"
-                                    value={this.state.endereco}
+                                    value={this.state.address}
                                     onChange={this.inputEndereco}
                                 />
                             </div>
@@ -283,7 +290,7 @@ class Responsavel extends React.Component {
                                     id="telefone"
                                     type="tel"
                                     className='form-control'
-                                    value={this.state.telefone}
+                                    value={this.state.phone}
                                     onChange={this.inputTelefone}
                                 />
                             </div>

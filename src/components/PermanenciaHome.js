@@ -1,4 +1,5 @@
 import React from "react";
+import { Table } from "react-bootstrap";
 
 const backEndUrl = "http://localhost:5000/";
 
@@ -250,7 +251,7 @@ class PermanenciaHome extends React.Component {
                             </button>
                         </div>
                     </div>
-                    <hr className="mt-4"/>
+                    <hr className="mt-4" />
 
                     <div className='col-md-2'>
                         {this.state.id === 0 ? (
@@ -282,47 +283,52 @@ class PermanenciaHome extends React.Component {
                     </div>
                 </form>
                 <hr />
-
-                <div className="card mb-2 shadow-sm" >
-                    <div className='card-body'>
-                        <div className='d-flex justify-content-between'>
-                            <h5 className='card-title'>
-                                <span className="badge bg-secondary me-1">
-                                    {this.state.id}
-                                </span>
-                                - {this.state.name}
-                            </h5>
-                            <h6>
-                                <span className={"badge me-1 bg-" + this.estiloPermanencia(this.state.status)}>
-                                    Status: {this.statusPermanencia(this.state.status)}
-                                </span>
-                            </h6>
-                        </div>
-                        <p className='card-text'>
-                            {this.state.obs}
-                        </p>
-                        <p className='card-text'>
-                            {this.state.entry_date}
-                        </p>
-                        <p className='card-text'>
-                            {this.state.exit_date}
-                        </p>
-                        <p className='card-text'>
-                            {this.state.guardian}
-                        </p>
-                        <div className='d-flex justify-content-end pt-2 m-0 border-top'>
-                            <button className='btn btn-sm btn-outline-primary me-2' onClick={() => this.carregarDados(this.state.id)}>
-                                <i className='fa-solid fa-pen me-2'></i>
-                                Editar Permanência
-                            </button>
-                            <button className='btn btn-sm btn-outline-danger' onClick={() => this.excluirPermanencia(this.state.id)}>
-                                <i className='fa-solid fa-trash me-2'></i>
-                                Fechar Permanência
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
+        )
+    }
+
+    renderTabela() {
+        return (
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF/RG</th>
+                        <th>Data de nascimento</th>
+                        <th>Endereço</th>
+                        <th>Observação</th>
+                        <th>Responsáveis</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        this.state.permanencia.map((permanencia) =>
+                            <tr>
+                                <td> {permanencia.name} </td>
+                                <td> {permanencia.cpf} </td>
+                                <td> {permanencia.birthdate} </td>
+                                <td> {permanencia.address} </td>
+                                <td> {permanencia.obs} </td>
+                                <td> {permanencia.guardian} </td>
+                                <td>
+                                    <button className='btn btn-sm btn-outline-primary me-2'
+                                        data-cy='buttonEditar'
+                                        onClick={() => this.carregarDados(permanencia.id)}>
+                                        <i className='fa-solid fa-pen me-2'></i>
+                                        Editar
+                                    </button>
+                                    <button className='btn btn-sm btn-outline-danger'
+                                        onClick={() => this.excluirPermanencia(permanencia.id)}>
+                                        <i className='fa-solid fa-trash me-1'></i>
+                                        Excluir
+                                    </button>
+                                </td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </Table>
         )
     }
 }

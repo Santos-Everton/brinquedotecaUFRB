@@ -44,7 +44,7 @@ class PermanenciaHome extends React.Component {
             .then(resposta => resposta.json())
             .then(dados => {
                 this.setState({ permanencia: dados })
-                alert(this.state.permanencia);
+                //alert(this.state.permanencia);
             });
     }
 
@@ -79,13 +79,15 @@ class PermanenciaHome extends React.Component {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(permanencia)
         }).then(resposta => {
-            if (resposta.ok) {
+            alert(resposta.ok)
+            if (resposta.ok) {                
                 this.buscarPermanencia();
                 alert("Permanência adicionada!");
             } else {
                 alert("Não foi possível adicionar a permanência!");
             }
-        });
+        })
+        .catch(erro => {alert(erro)});
     }
 
     editarPermanencia = (permanencia) => {
@@ -105,6 +107,7 @@ class PermanenciaHome extends React.Component {
     salvarPermanencia = () => {
         this.reset();
         if (this.state.id === 0) {
+            alert("chegou em criar permanencia");
             const permanencia = {
                 //nome: this.state.nome,
                 //cpfrg: this.state.cpfrg,
@@ -179,6 +182,51 @@ class PermanenciaHome extends React.Component {
         }
     }
 
+    renderTabela() {
+        return (
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>ID Permanência</th>
+                        <th>Data de Entrada</th>
+                        <th>Data de Saída</th>
+                        <th>ID Criança</th>
+                        <th>ID Responsável da Entrada</th>
+                        <th>ID Responsável da Saída</th>
+                        <th>Opções</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        this.state.permanencia.map((permanencia) =>
+                            <tr>
+                                <td> {permanencia.id} </td>
+                                <td> {permanencia.entry_date} </td>
+                                <td> {permanencia.exit_date} </td>
+                                <td> {permanencia.children_id} </td>
+                                <td> {permanencia.guardian_entrance_id} </td>
+                                <td> {permanencia.guardian_exit_id} </td>
+                                <td>
+                                    <button className='btn btn-sm btn-outline-primary me-2'
+                                        data-cy='buttonEditar'
+                                        onClick={() => this.carregarDados(permanencia.id)}>
+                                        <i className='fa-solid fa-pen me-2'></i>
+                                        Editar
+                                    </button>
+                                    <button className='btn btn-sm btn-outline-danger'
+                                        onClick={() => this.excluirPermanencia(permanencia.id)}>
+                                        <i className='fa-solid fa-trash me-1'></i>
+                                        Excluir
+                                    </button>
+                                </td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </Table>
+        )
+    }
+
     render() {
         return (
             <div>
@@ -209,6 +257,7 @@ class PermanenciaHome extends React.Component {
                         <label className='form-label'>Data Entrada</label>
                         <input
                             id="dataEntrada"
+                            data-cy="dataEntry"
                             type="date"
                             className='form-control'
                             value={this.state.entry_date}
@@ -219,6 +268,7 @@ class PermanenciaHome extends React.Component {
                         <label className='form-label'>Data saída</label>
                         <input
                             id="dataEntrada"
+                            data-cy="dataSaida"
                             type="date"
                             className='form-control'
                             value={this.state.exit_date}
@@ -257,6 +307,7 @@ class PermanenciaHome extends React.Component {
                         {this.state.id === 0 ? (
                             <button
                                 className='btn btn-outline-secondary mt-2 mx-auto'
+                                data-cy='buttonPermanence'
                                 onClick={this.salvarPermanencia}
                             >
                                 <i className="fas fa-plus me-2"></i>
@@ -283,53 +334,9 @@ class PermanenciaHome extends React.Component {
                     </div>
                 </form>
                 <hr />
+                {this.renderTabela()}
             </div>
         )
-    }
-
-    renderTabela() {
-        return (
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF/RG</th>
-                        <th>Data de nascimento</th>
-                        <th>Endereço</th>
-                        <th>Observação</th>
-                        <th>Responsáveis</th>
-                        <th>Opções</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        this.state.permanencia.map((permanencia) =>
-                            <tr>
-                                <td> {permanencia.name} </td>
-                                <td> {permanencia.cpf} </td>
-                                <td> {permanencia.birthdate} </td>
-                                <td> {permanencia.address} </td>
-                                <td> {permanencia.obs} </td>
-                                <td> {permanencia.guardian} </td>
-                                <td>
-                                    <button className='btn btn-sm btn-outline-primary me-2'
-                                        data-cy='buttonEditar'
-                                        onClick={() => this.carregarDados(permanencia.id)}>
-                                        <i className='fa-solid fa-pen me-2'></i>
-                                        Editar
-                                    </button>
-                                    <button className='btn btn-sm btn-outline-danger'
-                                        onClick={() => this.excluirPermanencia(permanencia.id)}>
-                                        <i className='fa-solid fa-trash me-1'></i>
-                                        Excluir
-                                    </button>
-                                </td>
-                            </tr>
-                        )
-                    }
-                </tbody>
-            </Table>
-        )
-    }
+    }   
 }
 export default PermanenciaHome;

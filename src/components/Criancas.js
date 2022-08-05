@@ -69,26 +69,30 @@ class Criancas extends React.Component {
     }
 
     carregarDados = (id) => {
+        alert('id: ' + id);
         fetch(`${backEndUrl}children/` + id, { method: "GET" })
-            .then(resposta => {
+            .then(resposta => 
                 resposta.json()
-                alert(resposta.json())
-            })
+                //alert(resposta.ok)
+            )
             .then(crianca => {
-                alert(crianca)
+                //this.setState({ crianca: dados })                
+                //alert(crianca.id + crianca.name);
+                
                 this.setState({
                     id: crianca.id,
-                    name: crianca.state.name,
-                    cpf: crianca.state.cpf,
-                    birthdate: crianca.state.birthDate,
-                    address: crianca.state.address,
-                    obs: crianca.state.obs,
-                    guardian: crianca.state.guardian,
-                    modal: crianca.state.modal
-                })
+                    name: crianca.name,
+                    cpf: crianca.cpf,
+                    birthDate: crianca.birthDate,
+                    address: crianca.address,
+                    obs: crianca.obs,
+                    guardian: crianca.guardian,
+                    modal: crianca.modal
+                });
+                            
                 this.abrirModal();
             })
-            .catch(erro => {alert(erro)})   
+            .catch(erro => {alert(erro)});
             
     }
 
@@ -108,18 +112,28 @@ class Criancas extends React.Component {
         });
     }
 
-    editarCrianca = (crianca) => {
-        fetch("URL do back", {
+    editarCrianca = (crianca, id) => {
+        //alert("crianca: " + JSON.stringify(crianca));
+        fetch(`${backEndUrl}children` + id, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(crianca)
-        }).then(resposta => {
+        }).then(resposta => 
+            alert(resposta.ok)
+            
+            
+            /*
+            {
+            alert(resposta.ok);
             if (resposta.ok) {
                 this.buscarCrianca();
             } else {
                 alert("Não foi possível editar dados da criança!");
             }
-        });
+        }
+        */
+        )
+        .catch(erro => alert(erro));
     }
 
     salvarCrianca = () => {             
@@ -139,17 +153,18 @@ class Criancas extends React.Component {
             this.adicionarCrianca(crianca);
         } else {
             const crianca = {
-                id: this.id,
+                //id: this.state.id,
                 name: this.state.name,
-                cpf: this.state.cpf,
+                //cpf: this.state.cpf,
                 birthDate: this.state.birthDate,
                 address: this.state.address,
                 obs: this.state.obs,
                 photo_url: '',
-                guardians: []
+                //guardians: []
                /* guardians: this.state.guardian*/
-            }            
-            this.editarCrianca(crianca);
+            }
+            alert("Entrou em editar");            
+            this.editarCrianca(crianca, this.state.id);
         }
         this.fecharModal();
     }
@@ -191,7 +206,7 @@ class Criancas extends React.Component {
     }
 
     abrirModal = () => {
-        alert('fui chamado')
+        alert(this.state.id)
         this.setState({
             modal: true
         })
@@ -227,6 +242,7 @@ class Criancas extends React.Component {
                                 <td> {crianca.guardian} </td>
                                 <td>
                                     <button className='btn btn-sm btn-outline-primary me-2'
+                                        data-cy='buttonEditar'
                                         onClick={() => this.carregarDados(crianca.id)}>
                                         <i className='fa-solid fa-pen me-2'></i>
                                         Editar

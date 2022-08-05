@@ -13,7 +13,7 @@ describe('Teste formulário adição', () => {
     cy.get('[id=endereco]').type('rua b');
     cy.get('[data-cy=buttonSalvar]').click();
     
-    cy.wait('@createCrianca').its('response.statusCode').should('eq', 201)
+    cy.wait('@createCrianca').its('response.statusCode').should('eq', 201);
 
   })
 })
